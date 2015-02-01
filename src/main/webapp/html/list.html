@@ -1,0 +1,37 @@
+<form class="form-inline">
+    <div class="input-group">
+        <input type="text"  ng-model="query" class="form-control" placeholder="Search in First Name">
+        <span class="input-group-btn">
+        	<button ng-click="reset()" type = "submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+        </span>
+    </div>
+    <button ng-click="query=''; reset()" ng-disabled="!query" type="submit" class="btn btn-default">Reset</button>
+</form>
+
+<div class="page-header">
+	<h1>List of Students</h1>
+</div>
+
+<table class="table table-striped table-condensed table-hover">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Gender</th>
+			<th>Active</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat = "student in students" id="student_{{student.id}}">
+			<td>{{ student.id }}</td>
+			<td>{{ student.firstName }}</td>
+			<td>{{ student.lastName }}</td>
+			<td>{{ student.gender }}</td>
+			<td>{{ student.status }}</td>
+			<td><a href="#/edit/{{student.id}}"><i class="glyphicon glyphicon-th-list"></i></a>
+			&nbsp; <a href="" ng-click="deleteStudent()"><i class="glyphicon glyphicon-trash"></i></a></td>
+		</tr>
+	</tbody>
+</table>
